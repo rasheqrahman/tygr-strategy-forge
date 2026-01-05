@@ -1,0 +1,8 @@
+
+project_id = "mmszeuoqdoeshkligcyn"
+
+[functions.send-magic-link]
+verify_jwt = false
+
+[functions.tidycal-booking]
+verify_jwt = false

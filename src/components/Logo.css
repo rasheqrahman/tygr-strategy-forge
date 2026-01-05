@@ -1,0 +1,37 @@
+
+/* Logo dynamic styling */
+.logo-container {
+  --tygr-primary: #f97316;
+  --ventures-primary: #b5b5b5;
+}
+
+/* Color variations for different contexts */
+.logo-container.logo-white {
+  --tygr-primary: #ffffff;
+  --ventures-primary: #f97316;
+}
+
+.logo-container.logo-dark {
+  --tygr-primary: #1e293b;
+  --ventures-primary: #f97316;
+}
+
+.logo-container.logo-orange {
+  --tygr-primary: #ffffff;
+  --ventures-primary: #ffffff;
+}
+
+/* Apply colors to SVG elements through CSS custom properties */
+.logo-container object {
+  width: 100%;
+  height: 100%;
+}
+
+/* Target SVG paths for color customization */
+.logo-container svg path:first-child {
+  fill: var(--tygr-primary);
+}
+
+.logo-container svg path:last-child {
+  fill: var(--ventures-primary);
+}
