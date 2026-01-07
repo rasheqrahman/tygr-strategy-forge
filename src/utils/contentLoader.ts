@@ -432,7 +432,7 @@ export const saveMarkdownFileToServer = async (
 ): Promise<{ success: boolean; error?: string }> => {
   try {
     const response = await fetch(
-      `http://72.60.172.1:8000/functions/v1/save-markdown-file`,
+      `https://tygrventures.com/supabase/functions/v1/save-markdown-file`,
       {
         method: "POST",
         headers: {

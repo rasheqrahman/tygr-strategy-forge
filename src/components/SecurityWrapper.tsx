@@ -16,7 +16,7 @@ const SecurityWrapper: React.FC<SecurityWrapperProps> = ({ children }) => {
       { 
         httpEquiv: 'Content-Security-Policy', 
         content: import.meta.env.PROD 
-          ? "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' http://72.60.172.1:8000;"
+          ? "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://tygrventures.com;"
           : "default-src 'self' 'unsafe-eval' 'unsafe-inline'; connect-src 'self' ws: wss: http: https:;"
       },
       { httpEquiv: 'Permissions-Policy', content: 'camera=(), microphone=(), geolocation=()' }
