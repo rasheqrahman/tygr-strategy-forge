@@ -1550,35 +1550,25 @@
     </script>
 
 
-    <!-- Supabase Integration -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Content Loading from JSON -->
     <script>
-        // Supabase Configuration
-        const SUPABASE_URL = 'https://tygrventures.com/supabase';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE';
-        
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Load content from JSON file
+        let contentData = null;
 
-        // Fetch content by type
-        async function fetchContent(type) {
+        async function loadContentData() {
             try {
-                const { data, error } = await supabase
-                    .from('editable_markdown_files')
-                    .select('*')
-                    .eq('type', type)
-                    .eq('published', true);
-                
-                if (error) throw error;
-                return data || [];
+                const response = await fetch('/content-data.json');
+                contentData = await response.json();
+                return contentData;
             } catch (err) {
-                console.error(`Error fetching ${type}:`, err);
-                return [];
+                console.error('Error loading content:', err);
+                return null;
             }
         }
 
         // Load Services
-        async function loadServices() {
-            const services = await fetchContent('service');
+        function loadServices() {
+            const services = contentData?.services || [];
             const grid = document.getElementById('services-grid');
             if (!grid || services.length === 0) return;
             
@@ -1590,17 +1580,16 @@
                 </div>
             `).join('');
             
-            // Re-trigger reveal animations
             initRevealAnimations();
         }
 
         // Load Industries
-        async function loadIndustries() {
-            const industries = await fetchContent('industry');
+        function loadIndustries() {
+            const industries = contentData?.industries || [];
             const grid = document.getElementById('industries-grid');
             if (!grid || industries.length === 0) return;
             
-            const icons = ['🏛️', '💰', '💻', '⚡', '🎓', '🚀', '🏥', '🏭'];
+            const icons = ['🏛️', '💰', '💻', '⚡', '🎓', '🚀'];
             grid.innerHTML = industries.map((industry, index) => `
                 <div class="industry-item reveal">
                     <div class="industry-icon">${icons[index % icons.length]}</div>
@@ -1613,31 +1602,21 @@
         }
 
         // Load Testimonials
-        async function loadTestimonials() {
-            const testimonials = await fetchContent('testimonial');
+        function loadTestimonials() {
+            const testimonials = contentData?.testimonials || [];
             const grid = document.getElementById('testimonials-grid');
-            if (!grid) return;
+            if (!grid || testimonials.length === 0) return;
             
-            // Fallback testimonials if none in database
-            const fallback = [
-                { title: 'Sarah Chen', content: 'TYGR Ventures transformed our digital strategy. Their modular approach helped us move fast without breaking things.', frontPageContent: 'VP of Operations', image: 'TechCorp Inc.' },
-                { title: 'Michael Torres', content: "Rasheq's ability to simplify complex problems is unmatched. He turned months of planning into weeks of execution.", frontPageContent: 'CEO', image: 'Innovate Labs' },
-                { title: 'Jennifer Park', content: "The best strategic partner we've worked with. They don't just advise—they roll up their sleeves and deliver.", frontPageContent: 'Director of Strategy', image: 'Global Dynamics' }
-            ];
-            
-            const data = testimonials.length > 0 ? testimonials : fallback;
-            
-            grid.innerHTML = data.map((t, index) => `
+            grid.innerHTML = testimonials.map((t, index) => `
                 <div class="testimonial-card" style="transition-delay: ${index * 100}ms">
-                    <blockquote class="testimonial-quote">"${t.content || t.excerpt || ''}"</blockquote>
+                    <blockquote class="testimonial-quote">"${t.content || ''}"</blockquote>
                     <div>
                         <p class="testimonial-author">${t.title || ''}</p>
-                        <p class="testimonial-role">${t.frontPageContent || ''}${t.image ? ', ' + t.image : ''}</p>
+                        <p class="testimonial-role">${t.role || ''}${t.company ? ', ' + t.company : ''}</p>
                     </div>
                 </div>
             `).join('');
             
-            // Animate testimonials
             setTimeout(() => {
                 document.querySelectorAll('.testimonial-card').forEach(card => {
                     card.classList.add('visible');
@@ -1646,12 +1625,11 @@
         }
 
         // Load Blog/Thoughts
-        async function loadThoughts() {
-            const blogs = await fetchContent('blog');
+        function loadThoughts() {
+            const blogs = contentData?.blogs || [];
             const grid = document.getElementById('thoughts-grid');
             if (!grid || blogs.length === 0) return;
             
-            // Only show first 3
             const displayBlogs = blogs.slice(0, 3);
             grid.innerHTML = displayBlogs.map(blog => `
                 <div class="thought-card reveal">
@@ -1665,8 +1643,8 @@
         }
 
         // Load Partners
-        async function loadPartners() {
-            const partners = await fetchContent('partner');
+        function loadPartners() {
+            const partners = contentData?.partners || [];
             const track = document.getElementById('ticker-track');
             if (!track || partners.length === 0) return;
             
@@ -1675,7 +1653,7 @@
             `).join('');
         }
 
-        // Re-initialize reveal animations for dynamically loaded content
+        // Initialize reveal animations
         function initRevealAnimations() {
             const reveals = document.querySelectorAll('.reveal:not(.visible)');
             const observer = new IntersectionObserver((entries) => {
@@ -1691,14 +1669,12 @@
 
         // Load all content when DOM is ready
         document.addEventListener('DOMContentLoaded', async () => {
-            // Load dynamic content
-            await Promise.all([
-                loadServices(),
-                loadIndustries(),
-                loadTestimonials(),
-                loadThoughts(),
-                loadPartners()
-            ]);
+            await loadContentData();
+            loadServices();
+            loadIndustries();
+            loadTestimonials();
+            loadThoughts();
+            loadPartners();
         });
     </script>
 </body>

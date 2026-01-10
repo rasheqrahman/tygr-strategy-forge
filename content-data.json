@@ -1,0 +1,140 @@
+{
+  "services": [
+    {
+      "slug": "implementation-services",
+      "title": "Implementation Services",
+      "excerpt": "End-to-end execution of technology solutions with proven methodologies.",
+      "icon": "wrench",
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+      "date": "2024-01-16",
+      "frontPageContent": "- System Integration",
+      "published": true
+    },
+    {
+      "slug": "performance-optimization",
+      "title": "Performance Optimization",
+      "excerpt": "Continuous improvement and optimization of technology investments.",
+      "icon": "bar-chart-3",
+      "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "date": "2024-01-17",
+      "frontPageContent": "- Performance Analytics",
+      "published": true
+    },
+    {
+      "slug": "team-augmentation",
+      "title": "Team Augmentation",
+      "excerpt": "Expert resources to complement and enhance your existing teams.",
+      "icon": "users",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+      "date": "2024-01-18",
+      "frontPageContent": "- Technical Expertise",
+      "published": true
+    },
+    {
+      "slug": "strategic-consulting",
+      "title": "Strategic Consulting",
+      "excerpt": "Vision and strategic planning to align technology with business objectives.",
+      "icon": "lightbulb",
+      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "date": "2024-01-15",
+      "frontPageContent": "- Digital Transformation",
+      "published": true
+    }
+  ],
+  "industries": [
+    {
+      "slug": "public-sector",
+      "title": "Public Sector",
+      "excerpt": "Empowering government agencies to modernize services and improve citizen experience.",
+      "icon": "building2",
+      "image": "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+      "date": "2024-01-23",
+      "frontPageContent": "- Digital Government",
+      "published": true
+    },
+    {
+      "slug": "energy",
+      "title": "Energy",
+      "excerpt": "Supporting energy companies in sustainable transformation initiatives.",
+      "icon": "zap",
+      "image": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+      "date": "2024-01-22",
+      "frontPageContent": "- Smart Grid Technology",
+      "published": true
+    },
+    {
+      "slug": "technology",
+      "title": "Technology",
+      "excerpt": "Helping tech startups and established companies navigate rapid innovation cycles.",
+      "icon": "smartphone",
+      "image": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+      "date": "2024-01-20",
+      "frontPageContent": "- SaaS Development",
+      "published": true
+    },
+    {
+      "slug": "financial-services",
+      "title": "Financial Services",
+      "excerpt": "Modernizing financial institutions through digital transformation solutions.",
+      "icon": "dollar-sign",
+      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "date": "2024-01-21",
+      "frontPageContent": "- Digital Banking",
+      "published": true
+    }
+  ],
+  "blogs": [
+    {
+      "slug": "hello-world",
+      "title": "Hello World!",
+      "excerpt": "A warm welcome to our blog where we share insights, stories, and discoveries from the world of technology and digital transformation.",
+      "icon": "",
+      "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+      "date": "2024-01-10",
+      "frontPageContent": "",
+      "published": true
+    }
+  ],
+  "testimonials": [
+    {
+      "title": "Sarah Chen",
+      "content": "TYGR Ventures transformed our digital strategy. Their modular approach helped us move fast without breaking things.",
+      "role": "VP of Operations",
+      "company": "TechCorp Inc."
+    },
+    {
+      "title": "Michael Torres",
+      "content": "Rasheq's ability to simplify complex problems is unmatched. He turned months of planning into weeks of execution.",
+      "role": "CEO",
+      "company": "Innovate Labs"
+    },
+    {
+      "title": "Jennifer Park",
+      "content": "The best strategic partner we've worked with. They don't just advise\u2014they roll up their sleeves and deliver.",
+      "role": "Director of Strategy",
+      "company": "Global Dynamics"
+    }
+  ],
+  "partners": [
+    {
+      "title": "Goldman Sachs",
+      "image": "/lovable-uploads/e417e248-5b2f-4c2d-828b-4464bad4e2b7.png"
+    },
+    {
+      "title": "Yale University",
+      "image": "/lovable-uploads/63fac0ed-5752-478a-a402-4461a78294c1.png"
+    },
+    {
+      "title": "IBM",
+      "image": "/lovable-uploads/0a080d1e-b5fe-42ae-a260-9f019ae7517c.png"
+    },
+    {
+      "title": "Defense Innovation Unit",
+      "image": "/lovable-uploads/75885457-9812-4baf-a880-d24a2842a34b.png"
+    },
+    {
+      "title": "Leidos",
+      "image": "/lovable-uploads/4e27bce1-f4a1-4bba-a069-aff10560cb1e.png"
+    }
+  ]
+}
